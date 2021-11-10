@@ -1,6 +1,8 @@
 # My Postman Collections
 > This repository is a set of my collections created in Postman API aimed at learning, working and improving qualifications while working with this tool
 
+![PostmanLogo](./img/postman logo.png)
+
 ## Table of Contents
 * [General Info](#general-information)
 * [Technologies Used](#technologies-used)
