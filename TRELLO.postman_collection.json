@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "cd465577-4c29-4e24-bf0a-699e509d29e6",
+		"_postman_id": "c4b0ca74-2c5c-4f4f-967d-488929250b53",
 		"name": "TRELLO",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -27,9 +27,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{trelloAPIURL}}/1/members/me/boards?key={{Key}}&token={{Token}}",
+							"raw": "{{URL}}/1/members/me/boards?key={{Key}}&token={{Token}}",
 							"host": [
-								"{{trelloAPIURL}}"
+								"{{URL}}"
 							],
 							"path": [
 								"1",
@@ -70,9 +70,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{trelloAPIURL}}/1/boards/{{idBoard}}?key={{Key}}&token={{Token}}",
+							"raw": "{{URL}}/1/boards/{{idBoard}}?key={{Key}}&token={{Token}}",
 							"host": [
-								"{{trelloAPIURL}}"
+								"{{URL}}"
 							],
 							"path": [
 								"1",
@@ -120,9 +120,9 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{trelloAPIURL}}/1/board/{{idBoard}}/memberships?filter=all&key={{Key}}&token={{Token}}",
+									"raw": "{{URL}}/1/board/{{idBoard}}/memberships?filter=all&key={{Key}}&token={{Token}}",
 									"host": [
-										"{{trelloAPIURL}}"
+										"{{URL}}"
 									],
 									"path": [
 										"1",
@@ -170,9 +170,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{trelloAPIURL}}/1/members/me/boards?fields=name,url&key={{Key}}&token={{Token}}",
+							"raw": "{{URL}}/1/members/me/boards?fields=name,url&key={{Key}}&token={{Token}}",
 							"host": [
-								"{{trelloAPIURL}}"
+								"{{URL}}"
 							],
 							"path": [
 								"1",
@@ -217,9 +217,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{trelloAPIURL}}/1/boards/{{idBoard}}?key={{Key}}&token={{Token}}",
+							"raw": "{{URL}}/1/boards/{{idBoard}}?fields=name,url&key={{Key}}&token={{Token}}",
 							"host": [
-								"{{trelloAPIURL}}"
+								"{{URL}}"
 							],
 							"path": [
 								"1",
@@ -229,8 +229,7 @@
 							"query": [
 								{
 									"key": "fields",
-									"value": "name,url",
-									"disabled": true
+									"value": "name,url"
 								},
 								{
 									"key": "key",
@@ -273,9 +272,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{trelloAPIURL}}/1/boards/{{idBoard}}?key={{Key}}&token={{Token}}",
+							"raw": "{{URL}}/1/boards/{{idBoard}}?key={{Key}}&token={{Token}}",
 							"host": [
-								"{{trelloAPIURL}}"
+								"{{URL}}"
 							],
 							"path": [
 								"1",
@@ -310,9 +309,9 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{trelloAPIURL}}/1/lists/{{idList}}?fields=all&key={{Key}}&token={{Token}}",
+									"raw": "{{URL}}/1/lists/{{idList}}?fields=all&key={{Key}}&token={{Token}}",
 									"host": [
-										"{{trelloAPIURL}}"
+										"{{URL}}"
 									],
 									"path": [
 										"1",
@@ -358,9 +357,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{trelloAPIURL}}/1/lists/{{idList}}/cards?key={{Key}}&token={{Token}}",
+							"raw": "{{URL}}/1/lists/{{idList}}/cards?key={{Key}}&token={{Token}}",
 							"host": [
-								"{{trelloAPIURL}}"
+								"{{URL}}"
 							],
 							"path": [
 								"1",
@@ -410,9 +409,9 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{trelloAPIURL}}/1/cards?name=Karta 01&idList={{idList}}&key={{Key}}&token={{Token}}",
+							"raw": "{{URL}}/1/cards?name=Karta 011&idList={{idList}}&key={{Key}}&token={{Token}}",
 							"host": [
-								"{{trelloAPIURL}}"
+								"{{URL}}"
 							],
 							"path": [
 								"1",
@@ -421,7 +420,7 @@
 							"query": [
 								{
 									"key": "name",
-									"value": "Karta 01"
+									"value": "Karta 011"
 								},
 								{
 									"key": "idList",
@@ -455,9 +454,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{trelloAPIURL}}/1/cards/{{idCard}}?key={{Key}}&token={{Token}}",
+							"raw": "{{URL}}/1/cards/{{idCard}}?key={{Key}}&token={{Token}}",
 							"host": [
-								"{{trelloAPIURL}}"
+								"{{URL}}"
 							],
 							"path": [
 								"1",
@@ -497,9 +496,9 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{trelloAPIURL}}/1/cards/{{idCard}}/actions/comments?text=to jest komentarz 2&key={{Key}}&token={{Token}}",
+							"raw": "{{URL}}/1/cards/{{idCard}}/actions/comments?text=to jest komentarz 2&key={{Key}}&token={{Token}}",
 							"host": [
-								"{{trelloAPIURL}}"
+								"{{URL}}"
 							],
 							"path": [
 								"1",
@@ -545,9 +544,9 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{trelloAPIURL}}/1/cards/{{idCard}}/idMembers?value=618a51b8f0bc71470b27adba&key={{Key}}&token={{Token}}",
+							"raw": "{{URL}}/1/cards/{{idCard}}/idMembers?value=618a51b8f0bc71470b27adba&key={{Key}}&token={{Token}}",
 							"host": [
-								"{{trelloAPIURL}}"
+								"{{URL}}"
 							],
 							"path": [
 								"1",
@@ -560,6 +559,305 @@
 									"key": "value",
 									"value": "618a51b8f0bc71470b27adba"
 								},
+								{
+									"key": "key",
+									"value": "{{Key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{Token}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Organizations",
+			"item": [
+				{
+					"name": "POST Create a new Organization",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"    const response = pm.response.json()\r",
+									"\r",
+									"pm.globals.set(\"idOrganization\", response.id);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/1/organizations?name=ohpclass7&displayName=ORP Gen. K. PUŁASKI&website=https://pl.wikipedia.org/wiki/ORP_Gen._K._Pu%C5%82aski&desc=PNS272&key={{Key}}&token={{Token}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"1",
+								"organizations"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "ohpclass7"
+								},
+								{
+									"key": "displayName",
+									"value": "ORP Gen. K. PUŁASKI"
+								},
+								{
+									"key": "website",
+									"value": "https://pl.wikipedia.org/wiki/ORP_Gen._K._Pu%C5%82aski"
+								},
+								{
+									"key": "desc",
+									"value": "PNS272"
+								},
+								{
+									"key": "key",
+									"value": "{{Key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{Token}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET all Organizations",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/1/members/me/organizations?fields=displayName,desc&key={{Key}}&token={{Token}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"1",
+								"members",
+								"me",
+								"organizations"
+							],
+							"query": [
+								{
+									"key": "fields",
+									"value": "displayName,desc"
+								},
+								{
+									"key": "key",
+									"value": "{{Key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{Token}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET an Organization",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/1/organizations/{{idOrganization}}?key={{Key}}&token={{Token}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"1",
+								"organizations",
+								"{{idOrganization}}"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{Key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{Token}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT  Update an Organization",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"arleigh_burke_class_destroyer\",\r\n    \"displayName\":\"USS Arleigh Burke\",\r\n    \"website\":\"https://en.wikipedia.org/wiki/USS_Arleigh_Burke\",\r\n    \"desc\":\"USNavy\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/1/organizations/{{idOrganization}}?key={{Key}}&token={{Token}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"1",
+								"organizations",
+								"{{idOrganization}}"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{Key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{Token}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE an Organization",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"arleigh_burke_class_destroyer\",\r\n    \"displayName\":\"USS Arleigh Burke\",\r\n    \"website\":\"https://en.wikipedia.org/wiki/USS_Arleigh_Burke\",\r\n    \"desc\":\"USNavy\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/1/organizations/{{idOrganization}}?key={{Key}}&token={{Token}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"1",
+								"organizations",
+								"{{idOrganization}}"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{Key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{Token}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET an Organization Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/1/organizations/{{idOrganization}}?key={{Key}}&token={{Token}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"1",
+								"organizations",
+								"{{idOrganization}}"
+							],
+							"query": [
 								{
 									"key": "key",
 									"value": "{{Key}}"
@@ -616,6 +914,10 @@
 		{
 			"key": "idCard",
 			"value": "618ac24b8441365ad74f82ca"
+		},
+		{
+			"key": "URL",
+			"value": "https://api.trello.com"
 		}
 	]
 }
