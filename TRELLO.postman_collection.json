@@ -101,10 +101,3894 @@
 			]
 		},
 		{
-			"name": "Test to Run",
+			"name": "Tests",
 			"item": [
 				{
-					"name": "Create a new Organization Copy",
+					"name": "TC-000100 (add & delete an Organization)",
+					"item": [
+						{
+							"name": "Create a new Organization",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"const response = pm.response.json()\r",
+											"\r",
+											"pm.collectionVariables.set(\"Organization01\", response.id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/organizations?key={{Key}}&token={{Token}}&displayName=3 FLOTYLLA OKRĘTÓW&desc=3FO W GDYNI&name=mw3fo&website=https://www.wojsko-polskie.pl/3fo/",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"organizations"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										},
+										{
+											"key": "displayName",
+											"value": "3 FLOTYLLA OKRĘTÓW"
+										},
+										{
+											"key": "desc",
+											"value": "3FO W GDYNI"
+										},
+										{
+											"key": "name",
+											"value": "mw3fo"
+										},
+										{
+											"key": "website",
+											"value": "https://www.wojsko-polskie.pl/3fo/"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete an Organization",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/organizations/{{Organization01}}?key={{Key}}&token={{Token}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"organizations",
+										"{{Organization01}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Confirmation of delete an Organization",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/organizations/{{Organization01}}?key={{Key}}&token={{Token}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"organizations",
+										"{{Organization01}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "TC-000101 (get an Organization)",
+					"item": [
+						{
+							"name": "Create a new Organization",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"const response = pm.response.json()\r",
+											"\r",
+											"pm.collectionVariables.set(\"Organization01\", response.id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/organizations?key={{Key}}&token={{Token}}&displayName=3 FLOTYLLA OKRĘTÓW&desc=3FO W GDYNI&name=mw3fo&website=https://www.wojsko-polskie.pl/3fo/",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"organizations"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										},
+										{
+											"key": "displayName",
+											"value": "3 FLOTYLLA OKRĘTÓW"
+										},
+										{
+											"key": "desc",
+											"value": "3FO W GDYNI"
+										},
+										{
+											"key": "name",
+											"value": "mw3fo"
+										},
+										{
+											"key": "website",
+											"value": "https://www.wojsko-polskie.pl/3fo/"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get an Organization",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/organizations/{{Organization01}}?key={{Key}}&token={{Token}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"organizations",
+										"{{Organization01}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										},
+										{
+											"key": "fields",
+											"value": "all",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete an Organization",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/organizations/{{Organization01}}?key={{Key}}&token={{Token}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"organizations",
+										"{{Organization01}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Confirmation of delete an Organization",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/organizations/{{Organization01}}?key={{Key}}&token={{Token}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"organizations",
+										"{{Organization01}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "TC-000102 (add & delete an Organizations)",
+					"item": [
+						{
+							"name": "Create Organization #1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"const response = pm.response.json()\r",
+											"\r",
+											"pm.collectionVariables.set(\"Organization01\", response.id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/organizations?key={{Key}}&token={{Token}}&displayName=3 FLOTYLLA OKRĘTÓW&desc=3FO W GDYNI&name=mw3fo&website=https://www.wojsko-polskie.pl/3fo/",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"organizations"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										},
+										{
+											"key": "displayName",
+											"value": "3 FLOTYLLA OKRĘTÓW"
+										},
+										{
+											"key": "desc",
+											"value": "3FO W GDYNI"
+										},
+										{
+											"key": "name",
+											"value": "mw3fo"
+										},
+										{
+											"key": "website",
+											"value": "https://www.wojsko-polskie.pl/3fo/"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Organization #2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"const response = pm.response.json()\r",
+											"\r",
+											"pm.collectionVariables.set(\"Organization02\", response.id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/organizations?key={{Key}}&token={{Token}}&displayName=8 FLOTYLLA OBRONY WYBRZEŻA&desc=8FOW W ŚWINOUJŚCIU&name=mw8fow&website=https://www.wojsko-polskie.pl/8fow/",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"organizations"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										},
+										{
+											"key": "displayName",
+											"value": "8 FLOTYLLA OBRONY WYBRZEŻA"
+										},
+										{
+											"key": "desc",
+											"value": "8FOW W ŚWINOUJŚCIU"
+										},
+										{
+											"key": "name",
+											"value": "mw8fow"
+										},
+										{
+											"key": "website",
+											"value": "https://www.wojsko-polskie.pl/8fow/"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Organization #3",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"const response = pm.response.json()\r",
+											"\r",
+											"pm.collectionVariables.set(\"Organization03\", response.id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/organizations?key={{Key}}&token={{Token}}&displayName=BRYGADA LOTNICTWA MARYNARKI WOJENNEJ&desc=BLMW&name=blmw&website=https://www.wojsko-polskie.pl/blmw/",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"organizations"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										},
+										{
+											"key": "displayName",
+											"value": "BRYGADA LOTNICTWA MARYNARKI WOJENNEJ"
+										},
+										{
+											"key": "desc",
+											"value": "BLMW"
+										},
+										{
+											"key": "name",
+											"value": "blmw"
+										},
+										{
+											"key": "website",
+											"value": "https://www.wojsko-polskie.pl/blmw/"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Organization #1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/organizations/{{Organization01}}?key={{Key}}&token={{Token}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"organizations",
+										"{{Organization01}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Organization #2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/organizations/{{Organization02}}?key={{Key}}&token={{Token}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"organizations",
+										"{{Organization02}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Organization #3",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/organizations/{{Organization03}}?key={{Key}}&token={{Token}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"organizations",
+										"{{Organization03}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Confirmation of delete Organization #1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/organizations/{{Organization01}}?key={{Key}}&token={{Token}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"organizations",
+										"{{Organization01}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Confirmation of delete Organization #2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/organizations/{{Organization02}}?key={{Key}}&token={{Token}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"organizations",
+										"{{Organization02}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Confirmation of delete Organization #3",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/organizations/{{Organization03}}?key={{Key}}&token={{Token}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"organizations",
+										"{{Organization03}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "TC-000103 (get an Organizations)",
+					"item": [
+						{
+							"name": "Create Organization #1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"const response = pm.response.json()\r",
+											"\r",
+											"pm.collectionVariables.set(\"Organization01\", response.id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/organizations?key={{Key}}&token={{Token}}&displayName=3 FLOTYLLA OKRĘTÓW&desc=3FO W GDYNI&name=mw3fo&website=https://www.wojsko-polskie.pl/3fo/",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"organizations"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										},
+										{
+											"key": "displayName",
+											"value": "3 FLOTYLLA OKRĘTÓW"
+										},
+										{
+											"key": "desc",
+											"value": "3FO W GDYNI"
+										},
+										{
+											"key": "name",
+											"value": "mw3fo"
+										},
+										{
+											"key": "website",
+											"value": "https://www.wojsko-polskie.pl/3fo/"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Organization #2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"const response = pm.response.json()\r",
+											"\r",
+											"pm.collectionVariables.set(\"Organization02\", response.id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/organizations?key={{Key}}&token={{Token}}&displayName=8 FLOTYLLA OBRONY WYBRZEŻA&desc=8FOW W ŚWINOUJŚCIU&name=mw8fow&website=https://www.wojsko-polskie.pl/8fow/",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"organizations"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										},
+										{
+											"key": "displayName",
+											"value": "8 FLOTYLLA OBRONY WYBRZEŻA"
+										},
+										{
+											"key": "desc",
+											"value": "8FOW W ŚWINOUJŚCIU"
+										},
+										{
+											"key": "name",
+											"value": "mw8fow"
+										},
+										{
+											"key": "website",
+											"value": "https://www.wojsko-polskie.pl/8fow/"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Organization #3",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"const response = pm.response.json()\r",
+											"\r",
+											"pm.collectionVariables.set(\"Organization03\", response.id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/organizations?key={{Key}}&token={{Token}}&displayName=BRYGADA LOTNICTWA MARYNARKI WOJENNEJ&desc=BLMW&name=blmw&website=https://www.wojsko-polskie.pl/blmw/",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"organizations"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										},
+										{
+											"key": "displayName",
+											"value": "BRYGADA LOTNICTWA MARYNARKI WOJENNEJ"
+										},
+										{
+											"key": "desc",
+											"value": "BLMW"
+										},
+										{
+											"key": "name",
+											"value": "blmw"
+										},
+										{
+											"key": "website",
+											"value": "https://www.wojsko-polskie.pl/blmw/"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all Organization",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/members/me/organizations?key={{Key}}&token={{Token}}&fields=displayName",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"members",
+										"me",
+										"organizations"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										},
+										{
+											"key": "fields",
+											"value": "displayName"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Organization #1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/organizations/{{Organization01}}?key={{Key}}&token={{Token}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"organizations",
+										"{{Organization01}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Organization #2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/organizations/{{Organization02}}?key={{Key}}&token={{Token}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"organizations",
+										"{{Organization02}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Organization #3",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/organizations/{{Organization03}}?key={{Key}}&token={{Token}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"organizations",
+										"{{Organization03}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Confirmation of delete Organization #1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/organizations/{{Organization01}}?key={{Key}}&token={{Token}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"organizations",
+										"{{Organization01}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Confirmation of delete Organization #2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/organizations/{{Organization02}}?key={{Key}}&token={{Token}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"organizations",
+										"{{Organization02}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Confirmation of delete Organization #3",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/organizations/{{Organization03}}?key={{Key}}&token={{Token}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"organizations",
+										"{{Organization03}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "TC-0002 (add & delete a Bord)",
+					"item": [
+						{
+							"name": "Create a new Organization",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"const response = pm.response.json()\r",
+											"\r",
+											"pm.collectionVariables.set(\"Organization01\", response.id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/organizations?key={{Key}}&token={{Token}}&displayName=3 FLOTYLLA OKRĘTÓW&desc=3FO W GDYNI&name=mw3fo&website=https://www.wojsko-polskie.pl/3fo/",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"organizations"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										},
+										{
+											"key": "displayName",
+											"value": "3 FLOTYLLA OKRĘTÓW"
+										},
+										{
+											"key": "desc",
+											"value": "3FO W GDYNI"
+										},
+										{
+											"key": "name",
+											"value": "mw3fo"
+										},
+										{
+											"key": "website",
+											"value": "https://www.wojsko-polskie.pl/3fo/"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create a Board",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"const response = pm.response.json()\r",
+											"\r",
+											"pm.collectionVariables.set(\"Board01\", response.id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/boards?key={{Key}}&token={{Token}}&name=ORP Gen. K. PUŁASKI&defaultLabels=true&defaultLists=true&desc=PNS272 OHP CLASS 7&idOrganization={{Organization01}}&idBoardSource=&keepFromSource=none&powerUps=all&prefs_permissionLevel=private&prefs_voting=disabled&prefs_comments=members&prefs_invitations=members&prefs_selfJoin=true&prefs_cardCovers=true&prefs_background=blue&prefs_cardAging=regular",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"boards"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										},
+										{
+											"key": "name",
+											"value": "ORP Gen. K. PUŁASKI"
+										},
+										{
+											"key": "defaultLabels",
+											"value": "true"
+										},
+										{
+											"key": "defaultLists",
+											"value": "true"
+										},
+										{
+											"key": "desc",
+											"value": "PNS272 OHP CLASS 7"
+										},
+										{
+											"key": "idOrganization",
+											"value": "{{Organization01}}"
+										},
+										{
+											"key": "idBoardSource",
+											"value": ""
+										},
+										{
+											"key": "keepFromSource",
+											"value": "none"
+										},
+										{
+											"key": "powerUps",
+											"value": "all"
+										},
+										{
+											"key": "prefs_permissionLevel",
+											"value": "private"
+										},
+										{
+											"key": "prefs_voting",
+											"value": "disabled"
+										},
+										{
+											"key": "prefs_comments",
+											"value": "members"
+										},
+										{
+											"key": "prefs_invitations",
+											"value": "members"
+										},
+										{
+											"key": "prefs_selfJoin",
+											"value": "true"
+										},
+										{
+											"key": "prefs_cardCovers",
+											"value": "true"
+										},
+										{
+											"key": "prefs_background",
+											"value": "blue"
+										},
+										{
+											"key": "prefs_cardAging",
+											"value": "regular"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get a Board",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/boards/{{Board01}}?key={{Key}}&token={{Token}}&actions=all&boardStars=none&cards=none&card_pluginData=false&checklists=none&customFields=false&fields=name, desc, descData, closed, idOrganization, pinned, url, shortUrl, prefs, labelNames&labels=all&lists=open&members=none&memberships=none&pluginData=false&organization=false&organization_pluginData=false&myPrefs=false&tags=false",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"boards",
+										"{{Board01}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										},
+										{
+											"key": "actions",
+											"value": "all"
+										},
+										{
+											"key": "boardStars",
+											"value": "none"
+										},
+										{
+											"key": "cards",
+											"value": "none"
+										},
+										{
+											"key": "card_pluginData",
+											"value": "false"
+										},
+										{
+											"key": "checklists",
+											"value": "none"
+										},
+										{
+											"key": "customFields",
+											"value": "false"
+										},
+										{
+											"key": "fields",
+											"value": "name, desc, descData, closed, idOrganization, pinned, url, shortUrl, prefs, labelNames"
+										},
+										{
+											"key": "labels",
+											"value": "all"
+										},
+										{
+											"key": "lists",
+											"value": "open"
+										},
+										{
+											"key": "members",
+											"value": "none"
+										},
+										{
+											"key": "memberships",
+											"value": "none"
+										},
+										{
+											"key": "pluginData",
+											"value": "false"
+										},
+										{
+											"key": "organization",
+											"value": "false"
+										},
+										{
+											"key": "organization_pluginData",
+											"value": "false"
+										},
+										{
+											"key": "myPrefs",
+											"value": "false"
+										},
+										{
+											"key": "tags",
+											"value": "false"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete a Board",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"New Board\",\r\n    \"defaultLabels\": true,\r\n    \"defaultLists\": true,\r\n    \"desc\": \"newBoard\",\r\n    \"idOrganization\": \"6189a3c50832f55dd4519baa\",\r\n    \"idBoardSource\": \"\",\r\n    \"keepFromSource\": \"none\",\r\n    \"powerUps\": \"all\",\r\n    \"prefs\": {\r\n        \"permissionLevel\" :\"private\",\r\n        \"voting\": \"disabled\",\r\n        \"comments\": \"members\",\r\n        \"invitations\": \"members\",\r\n        \"selfJoin\": true,\r\n        \"cardCovers\": true,\r\n        \"background\": \"blue\",\r\n        \"cardAging\": \"regular\"\r\n    }\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/1/boards/{{Board01}}?key={{Key}}&token={{Token}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"boards",
+										"{{Board01}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Confirmation of delete a Board",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/boards/{{Board01}}?key={{Key}}&token={{Token}}&actions=all&boardStars=none&cards=none&card_pluginData=false&checklists=none&customFields=false&fields=name, desc, descData, closed, idOrganization, pinned, url, shortUrl, prefs, labelNames&labels=all&lists=open&members=none&memberships=none&pluginData=false&organization=false&organization_pluginData=false&myPrefs=false&tags=false",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"boards",
+										"{{Board01}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										},
+										{
+											"key": "actions",
+											"value": "all"
+										},
+										{
+											"key": "boardStars",
+											"value": "none"
+										},
+										{
+											"key": "cards",
+											"value": "none"
+										},
+										{
+											"key": "card_pluginData",
+											"value": "false"
+										},
+										{
+											"key": "checklists",
+											"value": "none"
+										},
+										{
+											"key": "customFields",
+											"value": "false"
+										},
+										{
+											"key": "fields",
+											"value": "name, desc, descData, closed, idOrganization, pinned, url, shortUrl, prefs, labelNames"
+										},
+										{
+											"key": "labels",
+											"value": "all"
+										},
+										{
+											"key": "lists",
+											"value": "open"
+										},
+										{
+											"key": "members",
+											"value": "none"
+										},
+										{
+											"key": "memberships",
+											"value": "none"
+										},
+										{
+											"key": "pluginData",
+											"value": "false"
+										},
+										{
+											"key": "organization",
+											"value": "false"
+										},
+										{
+											"key": "organization_pluginData",
+											"value": "false"
+										},
+										{
+											"key": "myPrefs",
+											"value": "false"
+										},
+										{
+											"key": "tags",
+											"value": "false"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete an Organization",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/organizations/{{Organization01}}?key={{Key}}&token={{Token}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"organizations",
+										"{{Organization01}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Confirmation of delete an Organization",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/organizations/{{Organization01}}?key={{Key}}&token={{Token}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"organizations",
+										"{{Organization01}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "TC-0003 (add a List ver.1)",
+					"item": [
+						{
+							"name": "Create a new Organization",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"const response = pm.response.json()\r",
+											"\r",
+											"pm.collectionVariables.set(\"Organization01\", response.id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/organizations?key={{Key}}&token={{Token}}&displayName=3 FLOTYLLA OKRĘTÓW&desc=3FO W GDYNI&name=mw3fo&website=https://www.wojsko-polskie.pl/3fo/",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"organizations"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										},
+										{
+											"key": "displayName",
+											"value": "3 FLOTYLLA OKRĘTÓW"
+										},
+										{
+											"key": "desc",
+											"value": "3FO W GDYNI"
+										},
+										{
+											"key": "name",
+											"value": "mw3fo"
+										},
+										{
+											"key": "website",
+											"value": "https://www.wojsko-polskie.pl/3fo/"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create a Board",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"const response = pm.response.json()\r",
+											"\r",
+											"pm.collectionVariables.set(\"Board01\", response.id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/boards?key={{Key}}&token={{Token}}&name=ORP Gen. K. PUŁASKI&defaultLabels=true&defaultLists=true&desc=PNS272 OHP CLASS 7&idOrganization={{Organization01}}&idBoardSource=&keepFromSource=none&powerUps=all&prefs_permissionLevel=private&prefs_voting=disabled&prefs_comments=members&prefs_invitations=members&prefs_selfJoin=true&prefs_cardCovers=true&prefs_background=blue&prefs_cardAging=regular",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"boards"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										},
+										{
+											"key": "name",
+											"value": "ORP Gen. K. PUŁASKI"
+										},
+										{
+											"key": "defaultLabels",
+											"value": "true"
+										},
+										{
+											"key": "defaultLists",
+											"value": "true"
+										},
+										{
+											"key": "desc",
+											"value": "PNS272 OHP CLASS 7"
+										},
+										{
+											"key": "idOrganization",
+											"value": "{{Organization01}}"
+										},
+										{
+											"key": "idBoardSource",
+											"value": ""
+										},
+										{
+											"key": "keepFromSource",
+											"value": "none"
+										},
+										{
+											"key": "powerUps",
+											"value": "all"
+										},
+										{
+											"key": "prefs_permissionLevel",
+											"value": "private"
+										},
+										{
+											"key": "prefs_voting",
+											"value": "disabled"
+										},
+										{
+											"key": "prefs_comments",
+											"value": "members"
+										},
+										{
+											"key": "prefs_invitations",
+											"value": "members"
+										},
+										{
+											"key": "prefs_selfJoin",
+											"value": "true"
+										},
+										{
+											"key": "prefs_cardCovers",
+											"value": "true"
+										},
+										{
+											"key": "prefs_background",
+											"value": "blue"
+										},
+										{
+											"key": "prefs_cardAging",
+											"value": "regular"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create a List on a Board",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"const response = pm.response.json()\r",
+											"\r",
+											"pm.collectionVariables.set(\"TrelloList01\", response.id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/1/boards/{{Board01}}/lists?key={{Key}}&token={{Token}}&name=MAIN DECK&pos=top",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"boards",
+										"{{Board01}}",
+										"lists"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										},
+										{
+											"key": "name",
+											"value": "MAIN DECK"
+										},
+										{
+											"key": "pos",
+											"value": "top"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get a List",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/lists/{{TrelloList01}}?key={{Key}}&token={{Token}}&fields=all",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"lists",
+										"{{TrelloList01}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										},
+										{
+											"key": "fields",
+											"value": "all"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete a Board",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"New Board\",\r\n    \"defaultLabels\": true,\r\n    \"defaultLists\": true,\r\n    \"desc\": \"newBoard\",\r\n    \"idOrganization\": \"6189a3c50832f55dd4519baa\",\r\n    \"idBoardSource\": \"\",\r\n    \"keepFromSource\": \"none\",\r\n    \"powerUps\": \"all\",\r\n    \"prefs\": {\r\n        \"permissionLevel\" :\"private\",\r\n        \"voting\": \"disabled\",\r\n        \"comments\": \"members\",\r\n        \"invitations\": \"members\",\r\n        \"selfJoin\": true,\r\n        \"cardCovers\": true,\r\n        \"background\": \"blue\",\r\n        \"cardAging\": \"regular\"\r\n    }\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/1/boards/{{Board01}}?key={{Key}}&token={{Token}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"boards",
+										"{{Board01}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Confirmation of delete a Board",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/boards/{{Board01}}?key={{Key}}&token={{Token}}&actions=all&boardStars=none&cards=none&card_pluginData=false&checklists=none&customFields=false&fields=name, desc, descData, closed, idOrganization, pinned, url, shortUrl, prefs, labelNames&labels=all&lists=open&members=none&memberships=none&pluginData=false&organization=false&organization_pluginData=false&myPrefs=false&tags=false",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"boards",
+										"{{Board01}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										},
+										{
+											"key": "actions",
+											"value": "all"
+										},
+										{
+											"key": "boardStars",
+											"value": "none"
+										},
+										{
+											"key": "cards",
+											"value": "none"
+										},
+										{
+											"key": "card_pluginData",
+											"value": "false"
+										},
+										{
+											"key": "checklists",
+											"value": "none"
+										},
+										{
+											"key": "customFields",
+											"value": "false"
+										},
+										{
+											"key": "fields",
+											"value": "name, desc, descData, closed, idOrganization, pinned, url, shortUrl, prefs, labelNames"
+										},
+										{
+											"key": "labels",
+											"value": "all"
+										},
+										{
+											"key": "lists",
+											"value": "open"
+										},
+										{
+											"key": "members",
+											"value": "none"
+										},
+										{
+											"key": "memberships",
+											"value": "none"
+										},
+										{
+											"key": "pluginData",
+											"value": "false"
+										},
+										{
+											"key": "organization",
+											"value": "false"
+										},
+										{
+											"key": "organization_pluginData",
+											"value": "false"
+										},
+										{
+											"key": "myPrefs",
+											"value": "false"
+										},
+										{
+											"key": "tags",
+											"value": "false"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete an Organization",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/organizations/{{Organization01}}?key={{Key}}&token={{Token}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"organizations",
+										"{{Organization01}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Confirmation of delete an Organization",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/organizations/{{Organization01}}?key={{Key}}&token={{Token}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"organizations",
+										"{{Organization01}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "TC-0004 (add a List ver.2)",
+					"item": [
+						{
+							"name": "Create a new Organization",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"const response = pm.response.json()\r",
+											"\r",
+											"pm.collectionVariables.set(\"Organization01\", response.id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/organizations?key={{Key}}&token={{Token}}&displayName=3 FLOTYLLA OKRĘTÓW&desc=3FO W GDYNI&name=mw3fo&website=https://www.wojsko-polskie.pl/3fo/",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"organizations"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										},
+										{
+											"key": "displayName",
+											"value": "3 FLOTYLLA OKRĘTÓW"
+										},
+										{
+											"key": "desc",
+											"value": "3FO W GDYNI"
+										},
+										{
+											"key": "name",
+											"value": "mw3fo"
+										},
+										{
+											"key": "website",
+											"value": "https://www.wojsko-polskie.pl/3fo/"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create a Board",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"const response = pm.response.json()\r",
+											"\r",
+											"pm.collectionVariables.set(\"Board01\", response.id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/boards?key={{Key}}&token={{Token}}&name=ORP Gen. K. PUŁASKI&defaultLabels=true&defaultLists=true&desc=PNS272 OHP CLASS 7&idOrganization={{Organization01}}&idBoardSource=&keepFromSource=none&powerUps=all&prefs_permissionLevel=private&prefs_voting=disabled&prefs_comments=members&prefs_invitations=members&prefs_selfJoin=true&prefs_cardCovers=true&prefs_background=blue&prefs_cardAging=regular",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"boards"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										},
+										{
+											"key": "name",
+											"value": "ORP Gen. K. PUŁASKI"
+										},
+										{
+											"key": "defaultLabels",
+											"value": "true"
+										},
+										{
+											"key": "defaultLists",
+											"value": "true"
+										},
+										{
+											"key": "desc",
+											"value": "PNS272 OHP CLASS 7"
+										},
+										{
+											"key": "idOrganization",
+											"value": "{{Organization01}}"
+										},
+										{
+											"key": "idBoardSource",
+											"value": ""
+										},
+										{
+											"key": "keepFromSource",
+											"value": "none"
+										},
+										{
+											"key": "powerUps",
+											"value": "all"
+										},
+										{
+											"key": "prefs_permissionLevel",
+											"value": "private"
+										},
+										{
+											"key": "prefs_voting",
+											"value": "disabled"
+										},
+										{
+											"key": "prefs_comments",
+											"value": "members"
+										},
+										{
+											"key": "prefs_invitations",
+											"value": "members"
+										},
+										{
+											"key": "prefs_selfJoin",
+											"value": "true"
+										},
+										{
+											"key": "prefs_cardCovers",
+											"value": "true"
+										},
+										{
+											"key": "prefs_background",
+											"value": "blue"
+										},
+										{
+											"key": "prefs_cardAging",
+											"value": "regular"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create a new List",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"const response = pm.response.json()\r",
+											"\r",
+											"pm.collectionVariables.set(\"TrelloList01\", response.id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/1/lists/?key={{Key}}&token={{Token}}&name=MAIN DECK&idBoard={{Board01}}&idListSource&pos=top",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"lists",
+										""
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										},
+										{
+											"key": "name",
+											"value": "MAIN DECK"
+										},
+										{
+											"key": "idBoard",
+											"value": "{{Board01}}"
+										},
+										{
+											"key": "idListSource",
+											"value": null
+										},
+										{
+											"key": "pos",
+											"value": "top"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get a List",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/lists/{{TrelloList01}}?key={{Key}}&token={{Token}}&fields=all",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"lists",
+										"{{TrelloList01}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										},
+										{
+											"key": "fields",
+											"value": "all"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete a Board",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"New Board\",\r\n    \"defaultLabels\": true,\r\n    \"defaultLists\": true,\r\n    \"desc\": \"newBoard\",\r\n    \"idOrganization\": \"6189a3c50832f55dd4519baa\",\r\n    \"idBoardSource\": \"\",\r\n    \"keepFromSource\": \"none\",\r\n    \"powerUps\": \"all\",\r\n    \"prefs\": {\r\n        \"permissionLevel\" :\"private\",\r\n        \"voting\": \"disabled\",\r\n        \"comments\": \"members\",\r\n        \"invitations\": \"members\",\r\n        \"selfJoin\": true,\r\n        \"cardCovers\": true,\r\n        \"background\": \"blue\",\r\n        \"cardAging\": \"regular\"\r\n    }\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/1/boards/{{Board01}}?key={{Key}}&token={{Token}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"boards",
+										"{{Board01}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Confirmation of delete a Board",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/boards/{{Board01}}?key={{Key}}&token={{Token}}&actions=all&boardStars=none&cards=none&card_pluginData=false&checklists=none&customFields=false&fields=name, desc, descData, closed, idOrganization, pinned, url, shortUrl, prefs, labelNames&labels=all&lists=open&members=none&memberships=none&pluginData=false&organization=false&organization_pluginData=false&myPrefs=false&tags=false",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"boards",
+										"{{Board01}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										},
+										{
+											"key": "actions",
+											"value": "all"
+										},
+										{
+											"key": "boardStars",
+											"value": "none"
+										},
+										{
+											"key": "cards",
+											"value": "none"
+										},
+										{
+											"key": "card_pluginData",
+											"value": "false"
+										},
+										{
+											"key": "checklists",
+											"value": "none"
+										},
+										{
+											"key": "customFields",
+											"value": "false"
+										},
+										{
+											"key": "fields",
+											"value": "name, desc, descData, closed, idOrganization, pinned, url, shortUrl, prefs, labelNames"
+										},
+										{
+											"key": "labels",
+											"value": "all"
+										},
+										{
+											"key": "lists",
+											"value": "open"
+										},
+										{
+											"key": "members",
+											"value": "none"
+										},
+										{
+											"key": "memberships",
+											"value": "none"
+										},
+										{
+											"key": "pluginData",
+											"value": "false"
+										},
+										{
+											"key": "organization",
+											"value": "false"
+										},
+										{
+											"key": "organization_pluginData",
+											"value": "false"
+										},
+										{
+											"key": "myPrefs",
+											"value": "false"
+										},
+										{
+											"key": "tags",
+											"value": "false"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete an Organization",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/organizations/{{Organization01}}?key={{Key}}&token={{Token}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"organizations",
+										"{{Organization01}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Confirmation of delete an Organization",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/organizations/{{Organization01}}?key={{Key}}&token={{Token}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"organizations",
+										"{{Organization01}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "TC-0005 (get Lists on a Board)",
+					"item": [
+						{
+							"name": "Create a new Organization",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"const response = pm.response.json()\r",
+											"\r",
+											"pm.collectionVariables.set(\"Organization01\", response.id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/organizations?key={{Key}}&token={{Token}}&displayName=3 FLOTYLLA OKRĘTÓW&desc=3FO W GDYNI&name=mw3fo&website=https://www.wojsko-polskie.pl/3fo/",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"organizations"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										},
+										{
+											"key": "displayName",
+											"value": "3 FLOTYLLA OKRĘTÓW"
+										},
+										{
+											"key": "desc",
+											"value": "3FO W GDYNI"
+										},
+										{
+											"key": "name",
+											"value": "mw3fo"
+										},
+										{
+											"key": "website",
+											"value": "https://www.wojsko-polskie.pl/3fo/"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create a Board",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"const response = pm.response.json()\r",
+											"\r",
+											"pm.collectionVariables.set(\"Board01\", response.id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/boards?key={{Key}}&token={{Token}}&name=ORP Gen. K. PUŁASKI&defaultLabels=true&defaultLists=true&desc=PNS272 OHP CLASS 7&idOrganization={{Organization01}}&idBoardSource=&keepFromSource=none&powerUps=all&prefs_permissionLevel=private&prefs_voting=disabled&prefs_comments=members&prefs_invitations=members&prefs_selfJoin=true&prefs_cardCovers=true&prefs_background=blue&prefs_cardAging=regular",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"boards"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										},
+										{
+											"key": "name",
+											"value": "ORP Gen. K. PUŁASKI"
+										},
+										{
+											"key": "defaultLabels",
+											"value": "true"
+										},
+										{
+											"key": "defaultLists",
+											"value": "true"
+										},
+										{
+											"key": "desc",
+											"value": "PNS272 OHP CLASS 7"
+										},
+										{
+											"key": "idOrganization",
+											"value": "{{Organization01}}"
+										},
+										{
+											"key": "idBoardSource",
+											"value": ""
+										},
+										{
+											"key": "keepFromSource",
+											"value": "none"
+										},
+										{
+											"key": "powerUps",
+											"value": "all"
+										},
+										{
+											"key": "prefs_permissionLevel",
+											"value": "private"
+										},
+										{
+											"key": "prefs_voting",
+											"value": "disabled"
+										},
+										{
+											"key": "prefs_comments",
+											"value": "members"
+										},
+										{
+											"key": "prefs_invitations",
+											"value": "members"
+										},
+										{
+											"key": "prefs_selfJoin",
+											"value": "true"
+										},
+										{
+											"key": "prefs_cardCovers",
+											"value": "true"
+										},
+										{
+											"key": "prefs_background",
+											"value": "blue"
+										},
+										{
+											"key": "prefs_cardAging",
+											"value": "regular"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create a new List",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"const response = pm.response.json()\r",
+											"\r",
+											"pm.collectionVariables.set(\"TrelloList01\", response.id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/1/lists/?key={{Key}}&token={{Token}}&name=MAIN DECK&idBoard={{Board01}}&idListSource&pos=top",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"lists",
+										""
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										},
+										{
+											"key": "name",
+											"value": "MAIN DECK"
+										},
+										{
+											"key": "idBoard",
+											"value": "{{Board01}}"
+										},
+										{
+											"key": "idListSource",
+											"value": null
+										},
+										{
+											"key": "pos",
+											"value": "top"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Lists on a Board",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/boards/{{Board01}}/lists?key={{Key}}&token={{Token}}&cards=none&card_fields=all&filter=all&fields=id,name",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"boards",
+										"{{Board01}}",
+										"lists"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										},
+										{
+											"key": "cards",
+											"value": "none"
+										},
+										{
+											"key": "card_fields",
+											"value": "all"
+										},
+										{
+											"key": "filter",
+											"value": "all"
+										},
+										{
+											"key": "fields",
+											"value": "id,name"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete a Board",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"New Board\",\r\n    \"defaultLabels\": true,\r\n    \"defaultLists\": true,\r\n    \"desc\": \"newBoard\",\r\n    \"idOrganization\": \"6189a3c50832f55dd4519baa\",\r\n    \"idBoardSource\": \"\",\r\n    \"keepFromSource\": \"none\",\r\n    \"powerUps\": \"all\",\r\n    \"prefs\": {\r\n        \"permissionLevel\" :\"private\",\r\n        \"voting\": \"disabled\",\r\n        \"comments\": \"members\",\r\n        \"invitations\": \"members\",\r\n        \"selfJoin\": true,\r\n        \"cardCovers\": true,\r\n        \"background\": \"blue\",\r\n        \"cardAging\": \"regular\"\r\n    }\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/1/boards/{{Board01}}?key={{Key}}&token={{Token}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"boards",
+										"{{Board01}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Confirmation of delete a Board",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/boards/{{Board01}}?key={{Key}}&token={{Token}}&actions=all&boardStars=none&cards=none&card_pluginData=false&checklists=none&customFields=false&fields=name, desc, descData, closed, idOrganization, pinned, url, shortUrl, prefs, labelNames&labels=all&lists=open&members=none&memberships=none&pluginData=false&organization=false&organization_pluginData=false&myPrefs=false&tags=false",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"boards",
+										"{{Board01}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										},
+										{
+											"key": "actions",
+											"value": "all"
+										},
+										{
+											"key": "boardStars",
+											"value": "none"
+										},
+										{
+											"key": "cards",
+											"value": "none"
+										},
+										{
+											"key": "card_pluginData",
+											"value": "false"
+										},
+										{
+											"key": "checklists",
+											"value": "none"
+										},
+										{
+											"key": "customFields",
+											"value": "false"
+										},
+										{
+											"key": "fields",
+											"value": "name, desc, descData, closed, idOrganization, pinned, url, shortUrl, prefs, labelNames"
+										},
+										{
+											"key": "labels",
+											"value": "all"
+										},
+										{
+											"key": "lists",
+											"value": "open"
+										},
+										{
+											"key": "members",
+											"value": "none"
+										},
+										{
+											"key": "memberships",
+											"value": "none"
+										},
+										{
+											"key": "pluginData",
+											"value": "false"
+										},
+										{
+											"key": "organization",
+											"value": "false"
+										},
+										{
+											"key": "organization_pluginData",
+											"value": "false"
+										},
+										{
+											"key": "myPrefs",
+											"value": "false"
+										},
+										{
+											"key": "tags",
+											"value": "false"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete an Organization",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/organizations/{{Organization01}}?key={{Key}}&token={{Token}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"organizations",
+										"{{Organization01}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Confirmation of delete an Organization",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/organizations/{{Organization01}}?key={{Key}}&token={{Token}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"organizations",
+										"{{Organization01}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "TC-0006 (get Members of a Board)",
+					"item": [
+						{
+							"name": "Create a new Organization",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"const response = pm.response.json()\r",
+											"\r",
+											"pm.collectionVariables.set(\"Organization01\", response.id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/organizations?key={{Key}}&token={{Token}}&displayName=3 FLOTYLLA OKRĘTÓW&desc=3FO W GDYNI&name=mw3fo&website=https://www.wojsko-polskie.pl/3fo/",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"organizations"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										},
+										{
+											"key": "displayName",
+											"value": "3 FLOTYLLA OKRĘTÓW"
+										},
+										{
+											"key": "desc",
+											"value": "3FO W GDYNI"
+										},
+										{
+											"key": "name",
+											"value": "mw3fo"
+										},
+										{
+											"key": "website",
+											"value": "https://www.wojsko-polskie.pl/3fo/"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create a Board",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"const response = pm.response.json()\r",
+											"\r",
+											"pm.collectionVariables.set(\"Board01\", response.id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/boards?key={{Key}}&token={{Token}}&name=ORP Gen. K. PUŁASKI&defaultLabels=true&defaultLists=true&desc=PNS272 OHP CLASS 7&idOrganization={{Organization01}}&idBoardSource=&keepFromSource=none&powerUps=all&prefs_permissionLevel=private&prefs_voting=disabled&prefs_comments=members&prefs_invitations=members&prefs_selfJoin=true&prefs_cardCovers=true&prefs_background=blue&prefs_cardAging=regular",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"boards"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										},
+										{
+											"key": "name",
+											"value": "ORP Gen. K. PUŁASKI"
+										},
+										{
+											"key": "defaultLabels",
+											"value": "true"
+										},
+										{
+											"key": "defaultLists",
+											"value": "true"
+										},
+										{
+											"key": "desc",
+											"value": "PNS272 OHP CLASS 7"
+										},
+										{
+											"key": "idOrganization",
+											"value": "{{Organization01}}"
+										},
+										{
+											"key": "idBoardSource",
+											"value": ""
+										},
+										{
+											"key": "keepFromSource",
+											"value": "none"
+										},
+										{
+											"key": "powerUps",
+											"value": "all"
+										},
+										{
+											"key": "prefs_permissionLevel",
+											"value": "private"
+										},
+										{
+											"key": "prefs_voting",
+											"value": "disabled"
+										},
+										{
+											"key": "prefs_comments",
+											"value": "members"
+										},
+										{
+											"key": "prefs_invitations",
+											"value": "members"
+										},
+										{
+											"key": "prefs_selfJoin",
+											"value": "true"
+										},
+										{
+											"key": "prefs_cardCovers",
+											"value": "true"
+										},
+										{
+											"key": "prefs_background",
+											"value": "blue"
+										},
+										{
+											"key": "prefs_cardAging",
+											"value": "regular"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Memberships of a Board",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"New Board\",\r\n    \"defaultLabels\": true,\r\n    \"defaultLists\": true,\r\n    \"desc\": \"newBoard\",\r\n    \"idOrganization\": \"6189a3c50832f55dd4519baa\",\r\n    \"idBoardSource\": \"\",\r\n    \"keepFromSource\": \"none\",\r\n    \"powerUps\": \"all\",\r\n    \"prefs\": {\r\n        \"permissionLevel\" :\"private\",\r\n        \"voting\": \"disabled\",\r\n        \"comments\": \"members\",\r\n        \"invitations\": \"members\",\r\n        \"selfJoin\": true,\r\n        \"cardCovers\": true,\r\n        \"background\": \"blue\",\r\n        \"cardAging\": \"regular\"\r\n    }\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/1/boards/{{Board01}}/memberships?key={{Key}}&token={{Token}}&filter=all&activity=false&orgMemberType=false&member=true&member_fields=id,fullName,username",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"boards",
+										"{{Board01}}",
+										"memberships"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										},
+										{
+											"key": "filter",
+											"value": "all"
+										},
+										{
+											"key": "activity",
+											"value": "false"
+										},
+										{
+											"key": "orgMemberType",
+											"value": "false"
+										},
+										{
+											"key": "member",
+											"value": "true"
+										},
+										{
+											"key": "member_fields",
+											"value": "id,fullName,username"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete a Board",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"New Board\",\r\n    \"defaultLabels\": true,\r\n    \"defaultLists\": true,\r\n    \"desc\": \"newBoard\",\r\n    \"idOrganization\": \"6189a3c50832f55dd4519baa\",\r\n    \"idBoardSource\": \"\",\r\n    \"keepFromSource\": \"none\",\r\n    \"powerUps\": \"all\",\r\n    \"prefs\": {\r\n        \"permissionLevel\" :\"private\",\r\n        \"voting\": \"disabled\",\r\n        \"comments\": \"members\",\r\n        \"invitations\": \"members\",\r\n        \"selfJoin\": true,\r\n        \"cardCovers\": true,\r\n        \"background\": \"blue\",\r\n        \"cardAging\": \"regular\"\r\n    }\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/1/boards/{{Board01}}?key={{Key}}&token={{Token}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"boards",
+										"{{Board01}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Confirmation of delete a Board",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/boards/{{Board01}}?key={{Key}}&token={{Token}}&actions=all&boardStars=none&cards=none&card_pluginData=false&checklists=none&customFields=false&fields=name, desc, descData, closed, idOrganization, pinned, url, shortUrl, prefs, labelNames&labels=all&lists=open&members=none&memberships=none&pluginData=false&organization=false&organization_pluginData=false&myPrefs=false&tags=false",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"boards",
+										"{{Board01}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										},
+										{
+											"key": "actions",
+											"value": "all"
+										},
+										{
+											"key": "boardStars",
+											"value": "none"
+										},
+										{
+											"key": "cards",
+											"value": "none"
+										},
+										{
+											"key": "card_pluginData",
+											"value": "false"
+										},
+										{
+											"key": "checklists",
+											"value": "none"
+										},
+										{
+											"key": "customFields",
+											"value": "false"
+										},
+										{
+											"key": "fields",
+											"value": "name, desc, descData, closed, idOrganization, pinned, url, shortUrl, prefs, labelNames"
+										},
+										{
+											"key": "labels",
+											"value": "all"
+										},
+										{
+											"key": "lists",
+											"value": "open"
+										},
+										{
+											"key": "members",
+											"value": "none"
+										},
+										{
+											"key": "memberships",
+											"value": "none"
+										},
+										{
+											"key": "pluginData",
+											"value": "false"
+										},
+										{
+											"key": "organization",
+											"value": "false"
+										},
+										{
+											"key": "organization_pluginData",
+											"value": "false"
+										},
+										{
+											"key": "myPrefs",
+											"value": "false"
+										},
+										{
+											"key": "tags",
+											"value": "false"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete an Organization",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/organizations/{{Organization01}}?key={{Key}}&token={{Token}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"organizations",
+										"{{Organization01}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Confirmation of delete an Organization",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/1/organizations/{{Organization01}}?key={{Key}}&token={{Token}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"1",
+										"organizations",
+										"{{Organization01}}"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{Key}}"
+										},
+										{
+											"key": "token",
+											"value": "{{Token}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Organizations",
+			"item": [
+				{
+					"name": "Update an Organization",
 					"event": [
 						{
 							"listen": "test",
@@ -112,116 +3996,24 @@
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"const response = pm.response.json()\r",
-									"\r",
-									"pm.collectionVariables.set(\"Organization\", response.id);"
+									"});"
 								],
 								"type": "text/javascript"
 							}
 						}
 					],
 					"request": {
-						"method": "POST",
+						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"displayName\":\"ORP Gen.K.PUŁASKI\",\r\n    \"desc\":\"USS CLARK FFG-11\",\r\n    \"name\":\"PNS272\",\r\n    \"website\":\"https://pl.wikipedia.org/wiki/ORP_Gen._K._Pu%C5%82aski\"\r\n}",
+							"raw": "{\r\n    \"name\":\"pns273\",\r\n    \"displayName\":\"ORP Gen.T.KOŚCIUSZKO\",\r\n    \"desc\":\"USS WADSWORTH FFG-7\",\r\n    \"website\":\"https://pl.wikipedia.org/wiki/ORP_Gen._T._Ko%C5%9Bciuszko\",\r\n    \"prefs\":{\r\n        \"permissionLevel\":\"public\",\r\n        \"orgInviteRestrict\":\"subdomain@trello.com\",\r\n        \"associatedDomain\":\"http://kosciuszko.pl\",\r\n        \"externalMembersDisabled\":true,\r\n        \"googleAppsVersion\":2,\r\n        \"boardVisibilityRestrict\":{\r\n            \"private\":\"admin\",\r\n            \"org\":\"admin\",\r\n            \"public\":\"admin\"\r\n        }\r\n\r\n    }\r\n\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": {
-							"raw": "{{URL}}/1/organizations?key={{Key}}&token={{Token}}",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"1",
-								"organizations"
-							],
-							"query": [
-								{
-									"key": "key",
-									"value": "{{Key}}"
-								},
-								{
-									"key": "token",
-									"value": "{{Token}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get all Organization Copy",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{URL}}/1/members/me/organizations?key={{Key}}&token={{Token}}&fields=displayName",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"1",
-								"members",
-								"me",
-								"organizations"
-							],
-							"query": [
-								{
-									"key": "key",
-									"value": "{{Key}}"
-								},
-								{
-									"key": "token",
-									"value": "{{Token}}"
-								},
-								{
-									"key": "fields",
-									"value": "displayName"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get an Organization Copy",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
 						"url": {
 							"raw": "{{URL}}/1/organizations/{{Organization}}?key={{Key}}&token={{Token}}",
 							"host": [
@@ -231,6 +4023,233 @@
 								"1",
 								"organizations",
 								"{{Organization}}"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{Key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{Token}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get field on Organization",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/1/organizations/{{Organization01}}/?fields=id,name&key={{Key}}&token={{Token}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"1",
+								"organizations",
+								"{{Organization01}}",
+								""
+							],
+							"query": [
+								{
+									"key": "fields",
+									"value": "id,name"
+								},
+								{
+									"key": "key",
+									"value": "{{Key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{Token}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Actions for Organization",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/1/organizations/{{Organization}}/actions?key={{Key}}&token={{Token}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"1",
+								"organizations",
+								"{{Organization}}",
+								"actions"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{Key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{Token}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Boards in an Organization",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/1/organizations/{{Organization}}/boards?key={{Key}}&token={{Token}}&filter=all&fields=all",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"1",
+								"organizations",
+								"{{Organization}}",
+								"boards"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{Key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{Token}}"
+								},
+								{
+									"key": "filter",
+									"value": "all"
+								},
+								{
+									"key": "fields",
+									"value": "all"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve Organization's Exports",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/1/organizations/{{Organization}}/exports?key={{Key}}&token={{Token}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"1",
+								"organizations",
+								"{{Organization}}",
+								"exports"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{Key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{Token}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get the Members of an Organization",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/1/organizations/{{Organization}}/members?key={{Key}}&token={{Token}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"1",
+								"organizations",
+								"{{Organization}}",
+								"members"
 							],
 							"query": [
 								{
@@ -252,19 +4271,13 @@
 					"response": []
 				},
 				{
-					"name": "Create a Board Copy",
+					"name": "Create Export for Organizations",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"const response = pm.response.json()\r",
-									"\r",
-									"pm.collectionVariables.set(\"Board\", response.id);"
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -273,25 +4286,22 @@
 					"request": {
 						"method": "POST",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"New Board\",\r\n    \"defaultLabels\": true,\r\n    \"defaultLists\": true,\r\n    \"desc\": \"newBoard\",\r\n    \"idOrganization\": \"{{Organization}}\",\r\n    \"idBoardSource\": \"\",\r\n    \"keepFromSource\": \"none\",\r\n    \"powerUps\": \"all\",\r\n    \"prefs\": {\r\n        \"permissionLevel\" :\"private\",\r\n        \"voting\": \"disabled\",\r\n        \"comments\": \"members\",\r\n        \"invitations\": \"members\",\r\n        \"selfJoin\": true,\r\n        \"cardCovers\": true,\r\n        \"background\": \"blue\",\r\n        \"cardAging\": \"regular\"\r\n    }\r\n    }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "{{URL}}/1/boards?key={{Key}}&token={{Token}}",
+							"raw": "{{URL}}/1/organizations/{{Organization}}/exports?attachments=true&key={{Key}}&token={{Token}}",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"1",
-								"boards"
+								"organizations",
+								"{{Organization}}",
+								"exports"
 							],
 							"query": [
+								{
+									"key": "attachments",
+									"value": "true"
+								},
 								{
 									"key": "key",
 									"value": "{{Key}}"
@@ -304,9 +4314,14 @@
 						}
 					},
 					"response": []
-				},
+				}
+			]
+		},
+		{
+			"name": "Boards",
+			"item": [
 				{
-					"name": "Get a Board Copy",
+					"name": "Update a Board",
 					"event": [
 						{
 							"listen": "test",
@@ -321,103 +4336,10 @@
 						}
 					],
 					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{URL}}/1/boards/{{Board}}?key={{Key}}&token={{Token}}&actions=all&boardStars=none&cards=none&card_pluginData=false&checklists=none&customFields=false&fields=name, desc, descData, closed, idOrganization, pinned, url, shortUrl, prefs, labelNames&labels=all&lists=open&members=none&memberships=none&pluginData=false&organization=false&organization_pluginData=false&myPrefs=false&tags=false",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"1",
-								"boards",
-								"{{Board}}"
-							],
-							"query": [
-								{
-									"key": "key",
-									"value": "{{Key}}"
-								},
-								{
-									"key": "token",
-									"value": "{{Token}}"
-								},
-								{
-									"key": "actions",
-									"value": "all"
-								},
-								{
-									"key": "boardStars",
-									"value": "none"
-								},
-								{
-									"key": "cards",
-									"value": "none"
-								},
-								{
-									"key": "card_pluginData",
-									"value": "false"
-								},
-								{
-									"key": "checklists",
-									"value": "none"
-								},
-								{
-									"key": "customFields",
-									"value": "false"
-								},
-								{
-									"key": "fields",
-									"value": "name, desc, descData, closed, idOrganization, pinned, url, shortUrl, prefs, labelNames"
-								},
-								{
-									"key": "labels",
-									"value": "all"
-								},
-								{
-									"key": "lists",
-									"value": "open"
-								},
-								{
-									"key": "members",
-									"value": "none"
-								},
-								{
-									"key": "memberships",
-									"value": "none"
-								},
-								{
-									"key": "pluginData",
-									"value": "false"
-								},
-								{
-									"key": "organization",
-									"value": "false"
-								},
-								{
-									"key": "organization_pluginData",
-									"value": "false"
-								},
-								{
-									"key": "myPrefs",
-									"value": "false"
-								},
-								{
-									"key": "tags",
-									"value": "false"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update a Board Copy",
-					"request": {
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/1/boards/{{Board}}?key={{Key}}&token={{Token}}&name=Board Updated&desc=boardUpdated&closed=false&idOrganization=618edf6f19e3a040db0f3222&prefs/permissionLevel=public&prefs/selfJoin=false&prefs/cardCovers=false&prefs/hideVotes=true&prefs/invitations=admins&prefs/voting=members&prefs/comments=disabled&prefs/background=red&prefs/cardAging=pirate&prefs/calendarFeedEnabled=true",
+							"raw": "{{URL}}/1/boards/{{Board}}?key={{Key}}&token={{Token}}&name=Board Updated&desc=boardUpdated&closed=false&idOrganization=618edf6f19e3a040db0f3222&prefs/permissionLevel=public&prefs/selfJoin=false&prefs/cardCovers=false&prefs/hideVotes=true&prefs/invitations=admins&prefs/voting=members&prefs/comments=disabled&prefs/background=red&prefs/cardAging=pirate&prefs/calendarFeedEnabled=true&labelNames/green=green&labelNames/yellow=yellow&labelNames/orange=orange&labelNames/red=red&labelNames/purple=purple&labelNames/blue=blue",
 							"host": [
 								"{{URL}}"
 							],
@@ -503,247 +4425,30 @@
 								{
 									"key": "prefs/calendarFeedEnabled",
 									"value": "true"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete a Board Copy",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"New Board\",\r\n    \"defaultLabels\": true,\r\n    \"defaultLists\": true,\r\n    \"desc\": \"newBoard\",\r\n    \"idOrganization\": \"6189a3c50832f55dd4519baa\",\r\n    \"idBoardSource\": \"\",\r\n    \"keepFromSource\": \"none\",\r\n    \"powerUps\": \"all\",\r\n    \"prefs\": {\r\n        \"permissionLevel\" :\"private\",\r\n        \"voting\": \"disabled\",\r\n        \"comments\": \"members\",\r\n        \"invitations\": \"members\",\r\n        \"selfJoin\": true,\r\n        \"cardCovers\": true,\r\n        \"background\": \"blue\",\r\n        \"cardAging\": \"regular\"\r\n    }\r\n    }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{URL}}/1/boards/{{Board}}?key={{Key}}&token={{Token}}",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"1",
-								"boards",
-								"{{Board}}"
-							],
-							"query": [
-								{
-									"key": "key",
-									"value": "{{Key}}"
 								},
 								{
-									"key": "token",
-									"value": "{{Token}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Confirmation of delete a Board Copy",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 404\", function () {\r",
-									"    pm.response.to.have.status(404);\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{URL}}/1/boards/{{Board}}?key={{Key}}&token={{Token}}&actions=all&boardStars=none&cards=none&card_pluginData=false&checklists=none&customFields=false&fields=name, desc, descData, closed, idOrganization, pinned, url, shortUrl, prefs, labelNames&labels=all&lists=open&members=none&memberships=none&pluginData=false&organization=false&organization_pluginData=false&myPrefs=false&tags=false",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"1",
-								"boards",
-								"{{Board}}"
-							],
-							"query": [
-								{
-									"key": "key",
-									"value": "{{Key}}"
+									"key": "labelNames/green",
+									"value": "green"
 								},
 								{
-									"key": "token",
-									"value": "{{Token}}"
+									"key": "labelNames/yellow",
+									"value": "yellow"
 								},
 								{
-									"key": "actions",
-									"value": "all"
+									"key": "labelNames/orange",
+									"value": "orange"
 								},
 								{
-									"key": "boardStars",
-									"value": "none"
+									"key": "labelNames/red",
+									"value": "red"
 								},
 								{
-									"key": "cards",
-									"value": "none"
+									"key": "labelNames/purple",
+									"value": "purple"
 								},
 								{
-									"key": "card_pluginData",
-									"value": "false"
-								},
-								{
-									"key": "checklists",
-									"value": "none"
-								},
-								{
-									"key": "customFields",
-									"value": "false"
-								},
-								{
-									"key": "fields",
-									"value": "name, desc, descData, closed, idOrganization, pinned, url, shortUrl, prefs, labelNames"
-								},
-								{
-									"key": "labels",
-									"value": "all"
-								},
-								{
-									"key": "lists",
-									"value": "open"
-								},
-								{
-									"key": "members",
-									"value": "none"
-								},
-								{
-									"key": "memberships",
-									"value": "none"
-								},
-								{
-									"key": "pluginData",
-									"value": "false"
-								},
-								{
-									"key": "organization",
-									"value": "false"
-								},
-								{
-									"key": "organization_pluginData",
-									"value": "false"
-								},
-								{
-									"key": "myPrefs",
-									"value": "false"
-								},
-								{
-									"key": "tags",
-									"value": "false"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete an Organization Copy",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{URL}}/1/organizations/{{Organization}}?key={{Key}}&token={{Token}}",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"1",
-								"organizations",
-								"{{Organization}}"
-							],
-							"query": [
-								{
-									"key": "key",
-									"value": "{{Key}}"
-								},
-								{
-									"key": "token",
-									"value": "{{Token}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Confirmation of delete an Organization Copy",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 404\", function () {\r",
-									"    pm.response.to.have.status(404);\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{URL}}/1/organizations/{{Organization}}?key={{Key}}&token={{Token}}",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"1",
-								"organizations",
-								"{{Organization}}"
-							],
-							"query": [
-								{
-									"key": "key",
-									"value": "{{Key}}"
-								},
-								{
-									"key": "token",
-									"value": "{{Token}}"
+									"key": "labelNames/blue",
+									"value": "blue"
 								}
 							]
 						}
@@ -753,1116 +4458,8 @@
 			]
 		},
 		{
-			"name": "Organizations",
-			"item": [
-				{
-					"name": "Finished",
-					"item": [
-						{
-							"name": "Create a new Organization",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"\r",
-											"const response = pm.response.json()\r",
-											"\r",
-											"pm.collectionVariables.set(\"Organization\", response.id);"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"displayName\":\"ORP Gen.K.PUŁASKI\",\r\n    \"desc\":\"USS CLARK FFG-11\",\r\n    \"name\":\"PNS272\",\r\n    \"website\":\"https://pl.wikipedia.org/wiki/ORP_Gen._K._Pu%C5%82aski\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{URL}}/1/organizations?key={{Key}}&token={{Token}}",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"1",
-										"organizations"
-									],
-									"query": [
-										{
-											"key": "key",
-											"value": "{{Key}}"
-										},
-										{
-											"key": "token",
-											"value": "{{Token}}"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get all Organization",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{URL}}/1/members/me/organizations?key={{Key}}&token={{Token}}&fields=displayName",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"1",
-										"members",
-										"me",
-										"organizations"
-									],
-									"query": [
-										{
-											"key": "key",
-											"value": "{{Key}}"
-										},
-										{
-											"key": "token",
-											"value": "{{Token}}"
-										},
-										{
-											"key": "fields",
-											"value": "displayName"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get an Organization",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{URL}}/1/organizations/{{Organization}}?key={{Key}}&token={{Token}}",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"1",
-										"organizations",
-										"{{Organization}}"
-									],
-									"query": [
-										{
-											"key": "key",
-											"value": "{{Key}}"
-										},
-										{
-											"key": "token",
-											"value": "{{Token}}"
-										},
-										{
-											"key": "fields",
-											"value": "all",
-											"disabled": true
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Update an Organization",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"name\":\"pns273\",\r\n    \"displayName\":\"ORP Gen.T.KOŚCIUSZKO\",\r\n    \"desc\":\"USS WADSWORTH FFG-7\",\r\n    \"website\":\"https://pl.wikipedia.org/wiki/ORP_Gen._T._Ko%C5%9Bciuszko\",\r\n    \"prefs\":{\r\n        \"permissionLevel\":\"public\",\r\n        \"orgInviteRestrict\":\"subdomain@trello.com\",\r\n        \"associatedDomain\":\"http://kosciuszko.pl\",\r\n        \"externalMembersDisabled\":true,\r\n        \"googleAppsVersion\":2,\r\n        \"boardVisibilityRestrict\":{\r\n            \"private\":\"admin\",\r\n            \"org\":\"admin\",\r\n            \"public\":\"admin\"\r\n        }\r\n\r\n    }\r\n\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{URL}}/1/organizations/{{Organization}}?key={{Key}}&token={{Token}}",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"1",
-										"organizations",
-										"{{Organization}}"
-									],
-									"query": [
-										{
-											"key": "key",
-											"value": "{{Key}}"
-										},
-										{
-											"key": "token",
-											"value": "{{Token}}"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get field on Organization",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{URL}}/1/organizations/{{Organization}}/name?key={{Key}}&token={{Token}}",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"1",
-										"organizations",
-										"{{Organization}}",
-										"name"
-									],
-									"query": [
-										{
-											"key": "key",
-											"value": "{{Key}}"
-										},
-										{
-											"key": "token",
-											"value": "{{Token}}"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Delete an Organization",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{URL}}/1/organizations/{{Organization}}?key={{Key}}&token={{Token}}",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"1",
-										"organizations",
-										"{{Organization}}"
-									],
-									"query": [
-										{
-											"key": "key",
-											"value": "{{Key}}"
-										},
-										{
-											"key": "token",
-											"value": "{{Token}}"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Confirmation of delete an Organization",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 404\", function () {\r",
-											"    pm.response.to.have.status(404);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{URL}}/1/organizations/{{Organization}}?key={{Key}}&token={{Token}}",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"1",
-										"organizations",
-										"{{Organization}}"
-									],
-									"query": [
-										{
-											"key": "key",
-											"value": "{{Key}}"
-										},
-										{
-											"key": "token",
-											"value": "{{Token}}"
-										}
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "In progress",
-					"item": [
-						{
-							"name": "Get Actions for Organization",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{URL}}/1/organizations/{{Organization}}/actions?key={{Key}}&token={{Token}}",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"1",
-										"organizations",
-										"{{Organization}}",
-										"actions"
-									],
-									"query": [
-										{
-											"key": "key",
-											"value": "{{Key}}"
-										},
-										{
-											"key": "token",
-											"value": "{{Token}}"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get Boards in an Organization",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{URL}}/1/organizations/{{Organization}}/boards?key={{Key}}&token={{Token}}&filter=all&fields=all",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"1",
-										"organizations",
-										"{{Organization}}",
-										"boards"
-									],
-									"query": [
-										{
-											"key": "key",
-											"value": "{{Key}}"
-										},
-										{
-											"key": "token",
-											"value": "{{Token}}"
-										},
-										{
-											"key": "filter",
-											"value": "all"
-										},
-										{
-											"key": "fields",
-											"value": "all"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Retrieve Organization's Exports",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{URL}}/1/organizations/{{Organization}}/exports?key={{Key}}&token={{Token}}",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"1",
-										"organizations",
-										"{{Organization}}",
-										"exports"
-									],
-									"query": [
-										{
-											"key": "key",
-											"value": "{{Key}}"
-										},
-										{
-											"key": "token",
-											"value": "{{Token}}"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get the Members of an Organization",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{URL}}/1/organizations/{{Organization}}/members?key={{Key}}&token={{Token}}",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"1",
-										"organizations",
-										"{{Organization}}",
-										"members"
-									],
-									"query": [
-										{
-											"key": "key",
-											"value": "{{Key}}"
-										},
-										{
-											"key": "token",
-											"value": "{{Token}}"
-										},
-										{
-											"key": "fields",
-											"value": "all",
-											"disabled": true
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Create Export for Organizations",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [],
-								"url": {
-									"raw": "{{URL}}/1/organizations/{{Organization}}/exports?attachments=true&key={{Key}}&token={{Token}}",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"1",
-										"organizations",
-										"{{Organization}}",
-										"exports"
-									],
-									"query": [
-										{
-											"key": "attachments",
-											"value": "true"
-										},
-										{
-											"key": "key",
-											"value": "{{Key}}"
-										},
-										{
-											"key": "token",
-											"value": "{{Token}}"
-										}
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "Boards",
-			"item": [
-				{
-					"name": "Finished",
-					"item": [
-						{
-							"name": "Create a Board",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"\r",
-											"const response = pm.response.json()\r",
-											"\r",
-											"pm.collectionVariables.set(\"Board\", response.id);"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"name\": \"New Board\",\r\n    \"defaultLabels\": true,\r\n    \"defaultLists\": true,\r\n    \"desc\": \"newBoard\",\r\n    \"idOrganization\": \"6189a3c50832f55dd4519baa\",\r\n    \"idBoardSource\": \"\",\r\n    \"keepFromSource\": \"none\",\r\n    \"powerUps\": \"all\",\r\n    \"prefs\": {\r\n        \"permissionLevel\" :\"private\",\r\n        \"voting\": \"disabled\",\r\n        \"comments\": \"members\",\r\n        \"invitations\": \"members\",\r\n        \"selfJoin\": true,\r\n        \"cardCovers\": true,\r\n        \"background\": \"blue\",\r\n        \"cardAging\": \"regular\"\r\n    }\r\n    }",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{URL}}/1/boards?key={{Key}}&token={{Token}}",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"1",
-										"boards"
-									],
-									"query": [
-										{
-											"key": "key",
-											"value": "{{Key}}"
-										},
-										{
-											"key": "token",
-											"value": "{{Token}}"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get a Board",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{URL}}/1/boards/{{Board}}?key={{Key}}&token={{Token}}&actions=all&boardStars=none&cards=none&card_pluginData=false&checklists=none&customFields=false&fields=name, desc, descData, closed, idOrganization, pinned, url, shortUrl, prefs, labelNames&labels=all&lists=open&members=none&memberships=none&pluginData=false&organization=false&organization_pluginData=false&myPrefs=false&tags=false",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"1",
-										"boards",
-										"{{Board}}"
-									],
-									"query": [
-										{
-											"key": "key",
-											"value": "{{Key}}"
-										},
-										{
-											"key": "token",
-											"value": "{{Token}}"
-										},
-										{
-											"key": "actions",
-											"value": "all"
-										},
-										{
-											"key": "boardStars",
-											"value": "none"
-										},
-										{
-											"key": "cards",
-											"value": "none"
-										},
-										{
-											"key": "card_pluginData",
-											"value": "false"
-										},
-										{
-											"key": "checklists",
-											"value": "none"
-										},
-										{
-											"key": "customFields",
-											"value": "false"
-										},
-										{
-											"key": "fields",
-											"value": "name, desc, descData, closed, idOrganization, pinned, url, shortUrl, prefs, labelNames"
-										},
-										{
-											"key": "labels",
-											"value": "all"
-										},
-										{
-											"key": "lists",
-											"value": "open"
-										},
-										{
-											"key": "members",
-											"value": "none"
-										},
-										{
-											"key": "memberships",
-											"value": "none"
-										},
-										{
-											"key": "pluginData",
-											"value": "false"
-										},
-										{
-											"key": "organization",
-											"value": "false"
-										},
-										{
-											"key": "organization_pluginData",
-											"value": "false"
-										},
-										{
-											"key": "myPrefs",
-											"value": "false"
-										},
-										{
-											"key": "tags",
-											"value": "false"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Update a Board",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "PUT",
-								"header": [],
-								"url": {
-									"raw": "{{URL}}/1/boards/{{Board}}?key={{Key}}&token={{Token}}&name=Board Updated&desc=boardUpdated&closed=false&idOrganization=618edf6f19e3a040db0f3222&prefs/permissionLevel=public&prefs/selfJoin=false&prefs/cardCovers=false&prefs/hideVotes=true&prefs/invitations=admins&prefs/voting=members&prefs/comments=disabled&prefs/background=red&prefs/cardAging=pirate&prefs/calendarFeedEnabled=true&labelNames/green=green&labelNames/yellow=yellow&labelNames/orange=orange&labelNames/red=red&labelNames/purple=purple&labelNames/blue=blue",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"1",
-										"boards",
-										"{{Board}}"
-									],
-									"query": [
-										{
-											"key": "key",
-											"value": "{{Key}}"
-										},
-										{
-											"key": "token",
-											"value": "{{Token}}"
-										},
-										{
-											"key": "name",
-											"value": "Board Updated"
-										},
-										{
-											"key": "desc",
-											"value": "boardUpdated"
-										},
-										{
-											"key": "closed",
-											"value": "false"
-										},
-										{
-											"key": "subscribed",
-											"value": "form",
-											"description": "Whether the acting user is subscribed to the board",
-											"disabled": true
-										},
-										{
-											"key": "idOrganization",
-											"value": "618edf6f19e3a040db0f3222",
-											"description": "The id of the Workspace the board should be moved to"
-										},
-										{
-											"key": "prefs/permissionLevel",
-											"value": "public",
-											"description": "One of: org, private, public"
-										},
-										{
-											"key": "prefs/selfJoin",
-											"value": "false"
-										},
-										{
-											"key": "prefs/cardCovers",
-											"value": "false"
-										},
-										{
-											"key": "prefs/hideVotes",
-											"value": "true"
-										},
-										{
-											"key": "prefs/invitations",
-											"value": "admins",
-											"description": "One of: admins, members"
-										},
-										{
-											"key": "prefs/voting",
-											"value": "members",
-											"description": "One of disabled, members, observers, org, public"
-										},
-										{
-											"key": "prefs/comments",
-											"value": "disabled",
-											"description": "One of: disabled, members, observers, org, public"
-										},
-										{
-											"key": "prefs/background",
-											"value": "red",
-											"description": "one of: blue, orange, green, red, purple, pink, lime, sky, grey"
-										},
-										{
-											"key": "prefs/cardAging",
-											"value": "pirate",
-											"description": "One of: pirate, regular"
-										},
-										{
-											"key": "prefs/calendarFeedEnabled",
-											"value": "true"
-										},
-										{
-											"key": "labelNames/green",
-											"value": "green"
-										},
-										{
-											"key": "labelNames/yellow",
-											"value": "yellow"
-										},
-										{
-											"key": "labelNames/orange",
-											"value": "orange"
-										},
-										{
-											"key": "labelNames/red",
-											"value": "red"
-										},
-										{
-											"key": "labelNames/purple",
-											"value": "purple"
-										},
-										{
-											"key": "labelNames/blue",
-											"value": "blue"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Delete a Board",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "DELETE",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"name\": \"New Board\",\r\n    \"defaultLabels\": true,\r\n    \"defaultLists\": true,\r\n    \"desc\": \"newBoard\",\r\n    \"idOrganization\": \"6189a3c50832f55dd4519baa\",\r\n    \"idBoardSource\": \"\",\r\n    \"keepFromSource\": \"none\",\r\n    \"powerUps\": \"all\",\r\n    \"prefs\": {\r\n        \"permissionLevel\" :\"private\",\r\n        \"voting\": \"disabled\",\r\n        \"comments\": \"members\",\r\n        \"invitations\": \"members\",\r\n        \"selfJoin\": true,\r\n        \"cardCovers\": true,\r\n        \"background\": \"blue\",\r\n        \"cardAging\": \"regular\"\r\n    }\r\n    }",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{URL}}/1/boards/{{Board}}?key={{Key}}&token={{Token}}",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"1",
-										"boards",
-										"{{Board}}"
-									],
-									"query": [
-										{
-											"key": "key",
-											"value": "{{Key}}"
-										},
-										{
-											"key": "token",
-											"value": "{{Token}}"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Confirmation of delete a Board",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 404\", function () {\r",
-											"    pm.response.to.have.status(404);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{URL}}/1/boards/{{Board}}?key={{Key}}&token={{Token}}&actions=all&boardStars=none&cards=none&card_pluginData=false&checklists=none&customFields=false&fields=name, desc, descData, closed, idOrganization, pinned, url, shortUrl, prefs, labelNames&labels=all&lists=open&members=none&memberships=none&pluginData=false&organization=false&organization_pluginData=false&myPrefs=false&tags=false",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"1",
-										"boards",
-										"{{Board}}"
-									],
-									"query": [
-										{
-											"key": "key",
-											"value": "{{Key}}"
-										},
-										{
-											"key": "token",
-											"value": "{{Token}}"
-										},
-										{
-											"key": "actions",
-											"value": "all"
-										},
-										{
-											"key": "boardStars",
-											"value": "none"
-										},
-										{
-											"key": "cards",
-											"value": "none"
-										},
-										{
-											"key": "card_pluginData",
-											"value": "false"
-										},
-										{
-											"key": "checklists",
-											"value": "none"
-										},
-										{
-											"key": "customFields",
-											"value": "false"
-										},
-										{
-											"key": "fields",
-											"value": "name, desc, descData, closed, idOrganization, pinned, url, shortUrl, prefs, labelNames"
-										},
-										{
-											"key": "labels",
-											"value": "all"
-										},
-										{
-											"key": "lists",
-											"value": "open"
-										},
-										{
-											"key": "members",
-											"value": "none"
-										},
-										{
-											"key": "memberships",
-											"value": "none"
-										},
-										{
-											"key": "pluginData",
-											"value": "false"
-										},
-										{
-											"key": "organization",
-											"value": "false"
-										},
-										{
-											"key": "organization_pluginData",
-											"value": "false"
-										},
-										{
-											"key": "myPrefs",
-											"value": "false"
-										},
-										{
-											"key": "tags",
-											"value": "false"
-										}
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "In progress",
-					"item": [
-						{
-							"name": "Get Memberships of a Board",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"name\": \"New Board\",\r\n    \"defaultLabels\": true,\r\n    \"defaultLists\": true,\r\n    \"desc\": \"newBoard\",\r\n    \"idOrganization\": \"6189a3c50832f55dd4519baa\",\r\n    \"idBoardSource\": \"\",\r\n    \"keepFromSource\": \"none\",\r\n    \"powerUps\": \"all\",\r\n    \"prefs\": {\r\n        \"permissionLevel\" :\"private\",\r\n        \"voting\": \"disabled\",\r\n        \"comments\": \"members\",\r\n        \"invitations\": \"members\",\r\n        \"selfJoin\": true,\r\n        \"cardCovers\": true,\r\n        \"background\": \"blue\",\r\n        \"cardAging\": \"regular\"\r\n    }\r\n    }",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{URL}}/1/boards/{{Board}}?key={{Key}}&token={{Token}}&filter=all&activity=false&orgMemberType=false&member=true&member_fields=form",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"1",
-										"boards",
-										"{{Board}}"
-									],
-									"query": [
-										{
-											"key": "key",
-											"value": "{{Key}}"
-										},
-										{
-											"key": "token",
-											"value": "{{Token}}"
-										},
-										{
-											"key": "filter",
-											"value": "all"
-										},
-										{
-											"key": "activity",
-											"value": "false"
-										},
-										{
-											"key": "orgMemberType",
-											"value": "false"
-										},
-										{
-											"key": "member",
-											"value": "true"
-										},
-										{
-											"key": "member_fields",
-											"value": "form"
-										}
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				}
-			]
+			"name": "Lists",
+			"item": []
 		}
 	],
 	"event": [
@@ -1899,11 +4496,23 @@
 			"value": ""
 		},
 		{
-			"key": "Organization",
+			"key": "Organization01",
 			"value": ""
 		},
 		{
-			"key": "Board",
+			"key": "Board01",
+			"value": ""
+		},
+		{
+			"key": "TrelloList01",
+			"value": ""
+		},
+		{
+			"key": "Organization02",
+			"value": ""
+		},
+		{
+			"key": "Organization03",
 			"value": ""
 		}
 	]
